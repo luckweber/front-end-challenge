@@ -30,17 +30,12 @@ app.controller('getTop', function($scope, $http) {
   $http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&limit=10&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
       $scope.topArtistic  = response.data.artists.artist;
   });
-
-
   $http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&limit=10&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
     $scope.topMusic  = response.data.tracks.track;
-
   });
-
 
   $http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&limit=2&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
     $scope.topMusicHome  = response.data.tracks.track;
-
   });
 
 
@@ -91,6 +86,8 @@ app.controller('searchBandsDetails', function($scope, $http) {
 
        var  name =  paramenter;
 
+       var img = null;
+
       $http.get("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist="+name+"&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
           //$scope.myData = response.data.artist;
           $scope.name = response.data.artist.name;
@@ -101,7 +98,20 @@ app.controller('searchBandsDetails', function($scope, $http) {
           $scope.image = response.data.artist.image[2]['#text'];
           $scope.similar = response.data.artist.similar.artist;
 
+          img = "dd";
+
+
+
+          $scope.profileHead = {
+            "color" : "white",
+            "background-image" : "url("+response.data.artist.image[5]['#text']+")",
+            "background-size" : "auto"
+          }
+
+
+
       });
+
 
 
       $http.get("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&limit=10&artist="+name+"&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
@@ -112,5 +122,7 @@ app.controller('searchBandsDetails', function($scope, $http) {
           $scope.toptrack= response.data.toptracks.track
 
       });
+
+
 
 });
