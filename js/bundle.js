@@ -60,6 +60,24 @@ app.controller('searchAlbunsDetails', function($scope, $http) {
 
        var artist = currentLocation.split("/")[6];
        var album = currentLocation.split("/")[7];
+       var videoID;
+       var videoName;
+
+       $scope.play = function(e){
+          videoName = $(e.currentTarget).attr("data-video-id")
+
+         $http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&q="+videoName+"&key=AIzaSyCoLoQfQ1Y114Bjm7Z5Flq1UaafVslvKvU").then(function(response){
+            videoID = response.data.items[0].id.videoId;
+
+            player.loadVideoById(videoID);
+            player.playVideo();
+
+              $('#myModal3').modal();
+         });
+
+        // $('#myModal3').modal();
+
+       }
 
 
        $http.get("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=d964618b229a40df858f3efb6957d15f&artist="+artist+"&album="+album+"&format=json").then(function(response) {
@@ -71,6 +89,7 @@ app.controller('searchAlbunsDetails', function($scope, $http) {
           $scope.url = response.data.album.url;
           $scope.musics = response.data.album.tracks.track;
           $scope.date = response.data.album.wiki.published;
+
 
           $scope.profileHead = {
             "color" : "white",

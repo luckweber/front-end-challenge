@@ -185,9 +185,10 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
   <table class="table bio-table table-color">
       <tbody>
      <tr ng-repeat=" x in musics">
-        <td><li class="glyphicon glyphicon-music"></li> {{x.name}}</td>
+        <td><li ng-model="videoName" class="glyphicon glyphicon-music"></li> {{x.name}}</td>
         <td><li class="glyphicon glyphicon-equalizer"> : {{x.playcount}}</td>
-        <td><img class="img-size" alt="{{x.name}}" src="{{x.image[1]['#text']}}"></td>
+
+        <td><li ng-click="play($event)" ng-model="btnPlay" data-video-id="{{artisticName}} {{x.name}}" class="glyphicon glyphicon-play-circle btn-play"></td>
 
      </tr>
 
@@ -197,6 +198,81 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 </div><!--col-md-6 close-->
 
 </div><!--row close-->
+
+
+<!-- Modal 3-->
+<div class="modal fade" id="myModal3" role="dialog" >
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4><span class="glyphicon glyphicon-lock"></span> Ouvir Musica</h4>
+      </div>
+      <div class="modal-body">
+        <div id="player"></div>
+
+      <script>
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player('player', {
+            height: '360',
+            width: '100%',
+            videoId: 'M7lc1UVf-VE',
+            playerVars : {
+               'autoplay' : 0,
+               'rel' : 0,
+               'showinfo' : 0,
+               'egm' : 0,
+               'showsearch' : 0,
+               'controls' : 0,
+               'modestbranding' : 1,
+           },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
+
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+          event.target.playVideo();
+        }
+
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        var done = false;
+        function onPlayerStateChange(event) {
+          if (event.data == YT.PlayerState.PLAYING && !done) {
+            setTimeout(stopVideo, 6000);
+            done = true;
+          }
+        }
+        function stopVideo() {
+          player.stopVideo();
+        }
+      </script>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+          <span class="glyphicon glyphicon-remove"></span> Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
