@@ -20,6 +20,7 @@ app.config(function($routeProvider) {
 app.run(function($rootScope) {
     $rootScope.$on("$locationChangeStart", function(event, next, current) {
         $("html, body").animate({ scrollTop: 0 }, "slow");
+        $("#myModal2").modal('hide');
     });
 });
 
