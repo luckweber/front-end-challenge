@@ -89,14 +89,14 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 <section>
 
 <div class="container container2" style="margin-top: 30px;">
-<div class="profile-head">
-<div class="col-md- col-sm-4 col-xs-12">
+<div ng-style="profileHead" class="profile-head">
+<div ng-style="profileHeadTag" class="col-md- col-sm-4 col-xs-12">
 <img src="{{ albumImage }}" />
 <h6>{{ albumName }}</h6>
 </div><!--col-md-4 col-sm-4 col-xs-12 close-->
 
 
-<div class="col-md-5 col-sm-5 col-xs-12">
+<div ng-style="profileHeadTag" class="col-md-5 col-sm-5 col-xs-12">
 <h5>{{hex}}</h5>
 <p>{{ artisticName }} </p>
 <ul>

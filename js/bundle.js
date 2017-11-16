@@ -72,6 +72,16 @@ app.controller('searchAlbunsDetails', function($scope, $http) {
           $scope.musics = response.data.album.tracks.track;
           $scope.date = response.data.album.wiki.published;
 
+          $scope.profileHead = {
+            "color" : "white",
+            "background-image" : "url("+response.data.album.image[2]['#text']+")",
+            "background-size" : "auto"
+          }
+
+          $scope.profileHeadTag = {
+            "background-color" : "rgba(0,0,0,0.5)"
+          }
+
        });
 
 
@@ -106,6 +116,10 @@ app.controller('searchBandsDetails', function($scope, $http) {
             "color" : "white",
             "background-image" : "url("+response.data.artist.image[5]['#text']+")",
             "background-size" : "auto"
+          }
+
+          $scope.profileHeadTag = {
+            "background-color" : "rgba(0,0,0,0.5)"
           }
 
 
