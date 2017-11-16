@@ -74,8 +74,11 @@ app.controller('searchAlbunsDetails', function($scope, $http) {
 
           $scope.profileHead = {
             "color" : "white",
-            "background-image" : "url("+response.data.album.image[2]['#text']+")",
-            "background-size" : "auto"
+            "background-image" : "url("+response.data.album.image[5]['#text']+")",
+            "background-size" : "auto",
+            "background-repeat": "no-repeat",
+            "background-size": "cover",
+            "background-position": "center"
           }
 
           $scope.profileHeadTag = {
@@ -115,7 +118,10 @@ app.controller('searchBandsDetails', function($scope, $http) {
           $scope.profileHead = {
             "color" : "white",
             "background-image" : "url("+response.data.artist.image[5]['#text']+")",
-            "background-size" : "auto"
+            "background-size" : "auto",
+            "background-repeat": "no-repeat",
+            "background-size": "cover",
+            "background-position": "center"
           }
 
           $scope.profileHeadTag = {
