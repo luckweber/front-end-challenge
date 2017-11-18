@@ -1,0 +1,197 @@
+<html>
+  <head>
+      <title>Home</title>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+      <link href="css/style.css" rel="stylesheet" type="text/css">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+  <body ng-app="myApp">
+
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="myModal2" role="dialog" >
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4><span class="glyphicon glyphicon-lock"></span> Buscar</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="form-group">
+                <div ng-controller="searchBands">
+                  <label for="psw"><span class="glyphicon glyphicon-search"></span> Buscar pro Banda</label>
+                  <input ng-model="search" ng-keyup="getSearch()" type="text" class="form-control" id="psw" placeholder="Qual  o nome?">
+
+
+                  <table class="table bio-table">
+                      <tbody>
+                     <tr ng-repeat="x in myData | filter : search">
+                        <td><li class="glyphicon glyphicon-user"></li> <a href="#!/details/{{ x.name }}">{{ x.name }}</a></td>
+                        <td><img src="{{ x.image[0]['#text']}}" /></td>
+                     </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+                <button type="submit" class="btn btn-block">Buscar
+                  <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+              <span class="glyphicon glyphicon-remove"></span> Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- View Angular -->
+    <div ng-view></div>
+
+
+    <div id="topmusics" class="container-fluid text-center bg-grey" ng-controller="getTop">
+      <h2>Top Musicas</h2>
+      <h4>As mais tocadas do momento</h4>
+      <div class="row text-center" >
+        <div class="col-sm-4" ng-repeat="x in topMusic">
+          <div class="thumbnail">
+            <img src="{{x.image[2]['#text']}}" alt="{{x.name}}">
+            <p><strong>{{x.name}}</strong></p>
+            <p><a href="#!/details/{{ x.artist.name }}">{{x.artist.name}}</a></p>
+          </div>
+        </div>
+    </div>
+
+
+    <!-- Container (TOUR Section) -->
+    <div id="tour" class="bg-1">
+      <div class="container">
+
+        <div class="row text-center" ng-controller="getTop">
+          <div class="col-sm-4" ng-repeat=" x in topArtistic">
+            <div class="thumbnail">
+              <img src="{{x.image[2]['#text']}}" alt="Paris" width="400" height="300">
+              <p><strong>{{x.name}}</strong></p>
+              <p>Hit: {{x.playcount}}</p>
+              <div class="btn"><a href="#!/details/{{ x.name }}">Veja Mais</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">×</button>
+              <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
+            </div>
+            <div class="modal-body">
+              <form role="form">
+                <div class="form-group">
+                  <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
+                  <input type="number" class="form-control" id="psw" placeholder="How many?">
+                </div>
+                <div class="form-group">
+                  <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
+                  <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                </div>
+                  <button type="submit" class="btn btn-block">Pay
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                <span class="glyphicon glyphicon-remove"></span> Cancel
+              </button>
+              <p>Need <a href="#">help?</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container (Contact Section) -->
+    <div id="contact" class="container">
+      <h3 class="text-center">Contato</h3>
+
+      <div class="row">
+        <div class="col-md-4">
+          <p>Fan? Drop a note.</p>
+          <p><span class="glyphicon glyphicon-map-marker"></span>Rio de Janiero, Brasil</p>
+          <p><span class="glyphicon glyphicon-phone"></span>Telefone: 111111111</p>
+          <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="name" name="name" placeholder="Nome" type="text" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            </div>
+          </div>
+          <textarea class="form-control" id="comments" name="comments" placeholder="Comentario" rows="5"></textarea>
+          <br>
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <button class="btn pull-right" type="submit">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+
+    </div>
+
+
+
+
+    <!-- Add Google Maps -->
+    <div id="googleMap"></div>
+    <script>
+    function myMap() {
+    var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+    var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    var marker = new google.maps.Marker({position:myCenter});
+    marker.setMap(map);
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR7W1XafB3EYgVAebUtiScncv3nSEC_F8&callback=myMap"></script>
+    <!--
+    To use this code on your website, get a free API key from Google.
+    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+    -->
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </a><br><br>
+      <p>Criado  por:  <a href="mailto:thiago.p1989@gmail.com" data-toggle="tooltip" >Thiago  pereira da Silva</a></p>
+    </footer>
+
+
+  </body>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="js/scripts.js"></script>
+</html>

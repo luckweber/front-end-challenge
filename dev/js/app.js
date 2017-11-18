@@ -1,18 +1,27 @@
-var app = angular.module('myApp', ["ngRoute"]);
+var angular = require('angular');
+var ngRoute = require('angular-route');
+var YTPlayer = require('yt-player');
+
+
+
+
+var app = angular.module('myApp', [ngRoute]);
+
+
 
 
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "pages/index.html"
+        templateUrl : "views/index.html"
     })
     $routeProvider
     .when("/albuns/:id/:id", {
-        templateUrl : "pages/albuns.html",
+        templateUrl : "views/albuns.html",
         controller:   "searchAlbunsDetails"
     })
     .when("/details/:id", {
-        templateUrl: "pages/details.html",
+        templateUrl: "views/details.html",
         controller: "searchBandsDetails"
     });
 });
@@ -63,23 +72,29 @@ app.controller('searchAlbunsDetails', function($scope, $http) {
        var videoID;
        var videoName;
 
+       var opts = {
+        width: '100',
+        height: '50'
+       }
+
+
+       var player = new YTPlayer('#player', [opts]);
+
        $scope.play = function(e){
           videoName = $(e.currentTarget).attr("data-video-id")
 
          $http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&q="+videoName+"&key=AIzaSyCoLoQfQ1Y114Bjm7Z5Flq1UaafVslvKvU").then(function(response){
             videoID = response.data.items[0].id.videoId;
 
-            player.loadVideoById(videoID);
-            player.playVideo();
+            player.load(videoID);
+            player.play();
 
               $('#myModal3').modal();
 
               $('#myModal3').on('hidden.bs.modal', function (e) {
-                   player.stopVideo();
+                   player.stop();
               });
          });
-
-        // $('#myModal3').modal();
 
        }
 
