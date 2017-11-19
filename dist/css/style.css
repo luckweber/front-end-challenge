@@ -256,3 +256,14 @@ table tr{
 .img-size{
   width: 70px;
 }
+
+.btn-play:hover{
+  color:blue;
+
+
+}
+
+.btn-play{
+  font-size:25px;
+
+}
