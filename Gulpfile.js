@@ -27,10 +27,11 @@ function errorLog(error){
 
 
 gulp.task('browserify', function() {
-      return browserify('./dev/js/app.js')
+      return browserify('./dev/app.js')
           .bundle()
           .pipe(source('main.js'))
-          .pipe(gulp.dest('./dist/'));
+          .pipe(gulp.dest('./dist/'))
+          .pipe(livereload());
 });
 
 gulp.task("scripts", function(){
@@ -39,6 +40,13 @@ gulp.task("scripts", function(){
   .pipe(uglify())
   .on('error', errorLog)
   .pipe(gulp.dest('./dist/js'))
+  .pipe(livereload());
+
+  gulp.src('./dev/js/angular/**/*')
+  .pipe(plumber())
+  .pipe(uglify())
+  .on('error', errorLog)
+  .pipe(gulp.dest('./dist/js/angular'))
   .pipe(livereload());
 
 });

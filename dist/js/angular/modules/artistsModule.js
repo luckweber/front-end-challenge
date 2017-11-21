@@ -1,0 +1,1 @@
+var model=angular.module("artistsModule",[]);require("../controllers/artistsController");

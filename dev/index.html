@@ -10,6 +10,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+      <base href="/" />
   </head>
   <body ng-app="myApp">
 
@@ -59,10 +60,10 @@
     </div>
 
     <!-- View Angular -->
-    <div ng-view></div>
+    <div ui-view></div>
 
 
-    <div id="topmusics" class="container-fluid text-center bg-grey" ng-controller="getTop">
+    <div id="topmusics" class="container-fluid text-center bg-grey">
       <h2>Top Musicas</h2>
       <h4>As mais tocadas do momento</h4>
       <div class="row text-center" >
@@ -80,7 +81,7 @@
     <div id="tour" class="bg-1">
       <div class="container">
 
-        <div class="row text-center" ng-controller="getTop">
+        <div class="row text-center" >
           <div class="col-sm-4" ng-repeat=" x in topArtistic">
             <div class="thumbnail">
               <img src="{{x.image[2]['#text']}}" alt="Paris" width="400" height="300">

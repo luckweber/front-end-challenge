@@ -1,0 +1,1 @@
+angular.module("artistsController").controller("getStatus",function(t,r){r.getTopArtists(),r.getTopTracks()}),angular.module("artistsController").controller("getStatusArtist",function(t,r){r.getDetailArtist(),r.getTopArtists(),r.getTopTracks()}),angular.module("artistsController").controller("getStatusAlbuns",function(t,r){r.getDetailAlbuns(),r.getTopArtists(),r.getTopTracks()});
