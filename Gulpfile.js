@@ -17,7 +17,9 @@ var gulp    =  require("gulp"),
     browserify = require('browserify'),
 
     //
-    source = require('vinyl-source-stream');
+    source = require('vinyl-source-stream'),
+
+    imagemin = require('gulp-imagemin');
 
 
 function errorLog(error){
@@ -51,6 +53,14 @@ gulp.task("scripts", function(){
 
 });
 
+
+gulp.task('images', function(){
+  gulp.src('./dev/images/*')
+  .pipe(imagemin())
+  .pipe(gulp.dest('./dist/images'))
+  .pipe(livereload());
+
+});
 
 gulp.task('styles', function(){
   gulp.src('./dev/scss/*.css')
@@ -108,6 +118,7 @@ gulp.task('watch', function(){
   gulp.watch('./dev/scss/*.css', ['styles']);
   gulp.watch('./dev/index.html', ['html']);
   gulp.watch('./dev/views/**/*.html', ['htmls']);
+  gulp.watch('./dev/images/*', ['images']);
 });
 
 
@@ -124,4 +135,4 @@ gulp.task('server', function(){
 });
 
 
-gulp.task("default", ['server',  'lib', 'browserify', 'bootstrap', 'scripts', 'styles', 'watch',  'html','htmls']);
+gulp.task("default", ['server', 'images' ,'lib', 'browserify', 'bootstrap', 'scripts', 'styles', 'watch',  'html','htmls']);
