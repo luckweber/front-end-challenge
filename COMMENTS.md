@@ -14,11 +14,6 @@ $ npm install
 $ gulp
 ```
 
-##Para iniciar o teste com  unitário  com Karma:
-
-```bash
-$ npm test
-```
 
 
 ## Características
@@ -27,3 +22,21 @@ $ npm test
   * Lista top 10 Artistas através do  request da api  LastFM.
   * Buscar por Artistas e Álbuns relacionado  ao  artista selecionado.
   * Player com api do Youtube para assistir s musica.
+
+
+
+##Bibliotecas utilizadas
+
+  * browserify -- Utilizado para modularizar os códigos em JavaScript .
+  * karma-jasmine -- Utilizado para fazer os teste no sistema .
+
+
+### Bibliotecas para testes
+
+  * Karma
+
+## Testes no sistema.
+
+```bash
+$ npm test
+```
