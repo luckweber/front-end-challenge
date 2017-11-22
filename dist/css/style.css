@@ -267,3 +267,22 @@ table tr{
   font-size:25px;
 
 }
+
+.containerPlayer{
+  position: fixed;
+  visibility: visible;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background-color: white;
+}
+
+.containerPlayerClose{
+  position: absolute;
+  top: -15px;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background-image: url('../images/if_Close_Box_Red_34217.png');
+}

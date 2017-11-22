@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  $('.containerPlayer').css('visibility', 'hidden');
 
   $("body").on("click", ".scroolpage", function(e){
     e.preventDefault();
@@ -9,6 +9,13 @@ $(document).ready(function(){
 
     });
 
+  });
+
+  $('.containerPlayer').css('display', 'block');
+
+  $("body").on("click", ".containerPlayerClose", function(e){
+    $('.containerPlayer').css('visibility', 'hidden');
+    $('#ytplayer').attr('src', 'url');
   });
 
 

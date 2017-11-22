@@ -194,13 +194,19 @@ angular.module('artistsService')
       $http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&q="+videoName+"&key=AIzaSyCoLoQfQ1Y114Bjm7Z5Flq1UaafVslvKvU").then(function(response){
          videoID = response.data.items[0].id.videoId;
 
-         player.load(videoID);
-         player.play();
+         //player.load(videoID);
+         //player.play();
 
-           $('#myModal3').modal();
+        var url = 'http://www.youtube.com/embed/'+videoID;
+
+         $('#ytplayer').attr('src', url);
+
+         $('.containerPlayer').css('visibility', 'visible');
+
+           //$('#myModal3').modal();
 
            $('#myModal3').on('hidden.bs.modal', function (e) {
-                player.stop();
+                //player.stop();
            });
       });
 

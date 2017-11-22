@@ -119,6 +119,7 @@ gulp.task('watch', function(){
   gulp.watch('./dev/index.html', ['html']);
   gulp.watch('./dev/views/**/*.html', ['htmls']);
   gulp.watch('./dev/images/*', ['images']);
+  gulp.watch('./dev/app.js', ['browserify']);
 });
 
 
