@@ -21,7 +21,7 @@ $ gulp
   * Lista top 10 musicas através do  request da api  LastFM.
   * Lista top 10 Artistas através do  request da api  LastFM.
   * Buscar por Artistas e Álbuns relacionado  ao  artista selecionado.
-  * Player com api do Youtube para assistir s musica.
+  * Player com api do Youtube para assistir as musicas.
 
 
 
