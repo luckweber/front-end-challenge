@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css"
+integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#!/">HOME</a></li>
+        <li><a href="" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-search"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container container20">
+
+    <hgroup class="mb20">
+		<h1>Search Results</h1>
+		<h2 class="lead"><strong class="text-danger">{{pageResult}}</strong> results were found for the search for <strong class="text-danger">{{ListTotal}}</strong></h2>
+	</hgroup>
+
+    <section class="col-xs-12 col-sm-6 col-md-12">
+
+		<article class="search-result row" ng-repeat=" x in ListAlbuns">
+			<div class="col-xs-12 col-sm-12 col-md-3">
+				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="{{x.image[2]['#text']}}" alt="Lorem ipsum" /></a>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-2">
+				<ul class="meta-search">
+					<li><i class="glyphicon glyphicon-calendar"></i> <span>01/11/2014</span></li>
+					<li><i class="glyphicon glyphicon-time"></i> <span>10:13 am</span></li>
+					<li><i class="glyphicon glyphicon-tags"></i> <span>Sport</span></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-7">
+				<h3><a href="#!/details/{{x.name}}" title="">{{x.name}}</a></h3>
+				<p>{{x.artist.name}}</p>
+                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+			</div>
+			<span class="clearfix border"></span>
+		</article>
+
+	</section>
+</div>
+
+<nav aria-label="...">
+  <ul class="pagination pagination-lg">
+    <li class="page-item " ng-class="{'disabled':pageCurrent == 0}" ng-disabled="pageCurrent == 0">
+      <a class="page-link" href="#!/topmusics" tabindex="-1">Previous</a>
+    </li>
+    <li ng-repeat=" x in arrayPagenation" class="page-item" ng-class="{'active':x == pageCurrent}"><a  class="page-link"   href="#!/topmusics/page/{{x}}" >{{x}}</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>

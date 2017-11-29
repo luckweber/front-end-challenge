@@ -19,6 +19,174 @@ angular.module('artistsService')
   };
 
 
+  this.getListAlbuns = function() {
+
+    var currentLocation = decodeURI(window.location.toString());
+    var paramenter = currentLocation.split("/");
+
+    var index =  paramenter.length - 1;
+
+    var pageLimit = 10;
+    var pageCurrent = 0;
+
+    var arrayNew = [];
+    var arrayLength;
+    var arrayPagenation = [];
+
+    if(paramenter[index] == 'topalbuns'){
+      pageCurrent = 0;
+
+      $http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&limit=100&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
+       var temp = response.data.artists.artist;
+       arrayLength = Math.ceil(temp.length/pageLimit);
+
+       for(var i = 0; i < arrayLength-1; i++){
+
+         arrayPagenation[i] = i+1;
+
+       }
+
+       temp.forEach(function(current_value, index) {
+
+         if(index >= (pageLimit*pageCurrent) && index <= ((pageLimit*pageCurrent)+pageLimit)){
+
+           arrayNew.push(current_value);
+
+         }
+
+       });
+
+        $rootScope.arrayPagenation = arrayPagenation;
+        $rootScope.pageCurrent = pageCurrent;
+        $rootScope.ListAlbuns = arrayNew;
+        $rootScope.pageResult = arrayLength;
+        $rootScope.ListTotal = temp.length;
+
+      });
+
+    }else{
+
+      pageCurrent =paramenter[index];
+
+
+
+      $http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&limit=100&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
+       var temp = response.data.artists.artist;
+       arrayLength = Math.ceil(temp.length/pageLimit);
+
+       for(var i = 0; i < arrayLength-1; i++){
+
+         arrayPagenation[i] = i+1;
+
+       }
+
+       temp.forEach(function(current_value, index) {
+
+         if(index >= (pageLimit*pageCurrent) && index <= ((pageLimit*pageCurrent)+pageLimit)){
+
+           arrayNew.push(current_value);
+
+         }
+
+       });
+
+       $rootScope.arrayPagenation = arrayPagenation;
+       $rootScope.pageCurrent = pageCurrent;
+       $rootScope.ListAlbuns = arrayNew;
+       $rootScope.pageResult = arrayLength;
+       $rootScope.ListTotal = temp.length;
+
+      });
+
+    }
+
+  };
+
+
+  this.getListMusics = function() {
+
+    var currentLocation = decodeURI(window.location.toString());
+    var paramenter = currentLocation.split("/");
+
+    var index =  paramenter.length - 1;
+
+    var pageLimit = 10;
+    var pageLimitTotal = 100;
+    var pageCurrent = 0;
+
+    var arrayNew = [];
+    var arrayLength;
+    var arrayPagenation = [];
+
+    if(paramenter[index] == 'topmusics'){
+      pageCurrent = 0;
+
+      $http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&limit="+pageLimitTotal+"&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
+       var temp = response.data.tracks.track;
+       arrayLength = Math.ceil(temp.length/pageLimit);
+
+       for(var i = 0; i < arrayLength-1; i++){
+
+         arrayPagenation[i] = i+1;
+
+       }
+
+       temp.forEach(function(current_value, index) {
+
+         if(index >= (pageLimit*pageCurrent) && index <= ((pageLimit*pageCurrent)+pageLimit)){
+
+           arrayNew.push(current_value);
+
+         }
+
+       });
+
+        $rootScope.arrayPagenation = arrayPagenation;
+        $rootScope.pageCurrent = pageCurrent;
+        $rootScope.ListAlbuns = arrayNew;
+        $rootScope.pageResult = arrayLength;
+        $rootScope.ListTotal = temp.length;
+
+      });
+
+    }else{
+
+      pageCurrent =paramenter[index];
+
+
+
+      $http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&limit="+pageLimitTotal+"&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
+      var temp = response.data.tracks.track;
+       arrayLength = Math.ceil(temp.length/pageLimit);
+
+       for(var i = 0; i < arrayLength-1; i++){
+
+         arrayPagenation[i] = i+1;
+
+       }
+
+       temp.forEach(function(current_value, index) {
+
+         if(index >= (pageLimit*pageCurrent) && index <= ((pageLimit*pageCurrent)+pageLimit)){
+
+           arrayNew.push(current_value);
+
+         }
+
+       });
+
+       $rootScope.arrayPagenation = arrayPagenation;
+       $rootScope.pageCurrent = pageCurrent;
+       $rootScope.ListAlbuns = arrayNew;
+       $rootScope.pageResult = arrayLength;
+       $rootScope.ListTotal = temp.length;
+
+      });
+
+    }
+
+  };
+
   this.getDetailArtist = function() {
 
 

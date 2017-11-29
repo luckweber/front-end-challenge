@@ -86,7 +86,8 @@ gulp.task('html', function(){
 gulp.task('htmls', function(){
   gulp.src(['./dev/views/albuns.html',
             './dev/views/index.html',
-            './dev/views/details.html'])
+            './dev/views/details.html',
+            './dev/views/**/*'])
   .pipe(gulp.dest('./dist/views'))
   .pipe(livereload());
 });

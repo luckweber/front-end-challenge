@@ -39,6 +39,30 @@ app.config(function($stateProvider, $urlRouterProvider){
     controller:   "getStatusArtist"
   });
 
+  $stateProvider.state('topalbuns', {
+    url: "/topalbuns",
+    templateUrl : "views/listalbuns.html",
+    controller: 'getAllAlbuns'
+  });
+
+  $stateProvider.state('topalbuns2', {
+    url: "/topalbuns/page/:id",
+    templateUrl : "views/listalbuns.html",
+    controller: 'getAllAlbuns'
+  });
+
+  $stateProvider.state('topmusics', {
+    url: "/topmusics",
+    templateUrl : "views/listmusics.html",
+    controller: 'getAllMusics'
+  });
+
+  $stateProvider.state('topmusics2', {
+    url: "/topmusics/page/:id",
+    templateUrl : "views/listmusics.html",
+    controller: 'getAllMusics'
+  });
+
 });
 
 

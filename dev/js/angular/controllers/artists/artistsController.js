@@ -17,6 +17,25 @@ angular.module('artistsController')
     );
 
 
+    angular.module('artistsController')
+      .controller('getAllAlbuns', function($scope,artistsServiceCRUD) {
+          artistsServiceCRUD.getListAlbuns();
+          artistsServiceCRUD.getTopArtists();
+          artistsServiceCRUD.getTopTracks();
+
+        }
+      );
+
+      angular.module('artistsController')
+        .controller('getAllMusics', function($scope,artistsServiceCRUD) {
+            artistsServiceCRUD.getListMusics();
+            artistsServiceCRUD.getTopArtists();
+            artistsServiceCRUD.getTopTracks();
+
+          }
+        );
+
+
 
     angular.module('artistsController')
       .controller('getStatusAlbuns', function($scope,artistsServiceCRUD) {
