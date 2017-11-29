@@ -254,7 +254,7 @@ angular.module('artistsService')
 
     var index =  paramenter.length - 1;
 
-    var pageLimit = 10;
+    var pageLimit = 25;
     var pageLimitTotal = 100;
     var pageCurrent = 0;
 
