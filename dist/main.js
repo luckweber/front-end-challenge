@@ -325,6 +325,11 @@ angular.module('artistsService')
        $rootScope.pageResult = arrayLength;
        $rootScope.ListTotal = temp.length;
 
+       $rootScope.play = function(e){
+
+         alert("dd");
+       }
+
       });
 
     }

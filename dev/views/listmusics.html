@@ -42,9 +42,9 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7">
-				<h3><a href="#!/details/{{x.name}}" title="">{{x.name}}</a></h3>
+				<h3><a href="#!/details/{{x.artist.name}}" title="">{{x.name}}</a></h3>
 				<p>{{x.artist.name}}</p>
-                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+                <span data-video-id="{{x.artist.name}} {{x.name}}" ng-click="play()" class="plus"><a href=""  title=" {{x.name}}"><i class="glyphicon glyphicon-plus"></i></a></span>
 			</div>
 			<span class="clearfix border"></span>
 		</article>
