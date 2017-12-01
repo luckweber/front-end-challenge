@@ -239,6 +239,7 @@ integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJ
         <td><li class="glyphicon glyphicon-music"></li> {{x.name}}</td>
         <td><li class="glyphicon glyphicon-equalizer"> : {{x.playcount}}</td>
         <td><img class="img-size" alt="{{x.name}}" src="{{x.image[0]['#text']}}"></td>
+        <td><li ng-click="play($event)" ng-model="btnPlay" data-video-id="{{artisticName}} {{x.name}}" class="glyphicon glyphicon-play-circle btn-play"></td>
 
      </tr>
 

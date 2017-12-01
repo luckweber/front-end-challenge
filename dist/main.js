@@ -346,6 +346,31 @@ angular.module('artistsService')
 
     var img = null;
 
+
+    $rootScope.play = function(e){
+       videoName = $(e.currentTarget).attr("data-video-id")
+
+      $http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&q="+videoName+"&key=AIzaSyCoLoQfQ1Y114Bjm7Z5Flq1UaafVslvKvU").then(function(response){
+         videoID = response.data.items[0].id.videoId;
+
+         //player.load(videoID);
+         //player.play();
+
+        var url = 'http://www.youtube.com/embed/'+videoID;
+
+         $('#ytplayer').attr('src', url);
+
+         $('.containerPlayer').css('visibility', 'visible');
+
+           //$('#myModal3').modal();
+
+           $('#myModal3').on('hidden.bs.modal', function (e) {
+                //player.stop();
+           });
+      });
+
+    }
+
    $http.get("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist="+name+"&api_key=d964618b229a40df858f3efb6957d15f&format=json").then(function(response) {
        //$scope.myData = response.data.artist;
        $rootScope.name = response.data.artist.name;
